@@ -6,7 +6,8 @@ import { goerli, arbitrum, mainnet, polygon } from "wagmi/chains";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import Deploy from './pages/deploy/Deploy';
-import { Contract } from 'ethers';
+import Contract from './pages/contract/Contract';
+import Profile from './pages/profile/Profile';
 import Collection from './pages/collection/Collection';
 
 
@@ -42,6 +43,7 @@ function App() {
           <Routes>
             <Route path='/deploy' element= {<Deploy />} />
             <Route path='/collection' element= {<Collection />} />
+            <Route path='/profile' element= {<Profile />} />
             <Route path='/contract' element= {<Contract />} />
             <Route path='/' element= {<Deploy />} />
           </Routes>

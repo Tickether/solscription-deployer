@@ -1,7 +1,11 @@
 import './contract.css';
+import useFetch from "../../hooks/useFetch";
 
 
-function Contract({ accounts, setAccounts }) {
+
+function Contract() {
+
+  const {data, loading, reFetch} = useFetch(`https://api.tickether.io/api/contracts/:id`)
   
   return (
     <div className="contract">

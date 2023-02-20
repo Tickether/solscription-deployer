@@ -40,7 +40,7 @@ function Deploy() {
 
 
 
-  const { address } = useAccount()
+  const { address, isConnected } = useAccount()
   const { chain } = useNetwork()
   
   console.log(waitForTransaction.data?.logs[0].address)
@@ -54,6 +54,12 @@ function Deploy() {
       do {
         console.log(waitForTransaction.data?.logs[0].address)
         
+        const owner = ({
+          walletAddress: address
+        });
+        const ownerRes = await axios.post('https://api.solscription.io/api/owner', owner);
+        console.log(ownerRes)
+
         const contract = ({
           creator: address,
           owner: address,
@@ -61,7 +67,8 @@ function Deploy() {
           deployTxn: contractWrite.data?.hash,
           contractAddress: waitForTransaction.data?.logs[0].address,
         });
-        const res = await axios.post('https://api.tickether.io/api/auth/register', contract);
+        const contractRes = await axios.post('https://api.solscription.io/api/contract', contract);
+        console.log(contractRes)
         
         setInterval(() => {}, 10000);
 
@@ -117,7 +124,7 @@ function Deploy() {
         />
       </div>
       <div>
-        <button disabled={contractWrite.isLoading} onClick={handleCreate}>
+        <button disabled={ !isConnected || contractWrite.isLoading || waitForTransaction.isLoading } onClick={handleCreate}>
           Create
         </button>
         {error && (

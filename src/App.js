@@ -2,7 +2,7 @@ import './App.css';
 import { EthereumClient, modalConnectors, walletConnectProvider } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { goerli, arbitrum, mainnet, polygon } from "wagmi/chains";
+import { sepolia, goerli, arbitrum, mainnet, polygon } from "wagmi/chains";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import Deploy from './pages/deploy/Deploy';
@@ -14,7 +14,7 @@ import Collection from './pages/collection/Collection';
 
 function App() {
   
-  const chains = [goerli, arbitrum, mainnet, polygon];
+  const chains = [sepolia, goerli, arbitrum, mainnet, polygon];
 
   // Wagmi client
   const { provider } = configureChains(chains, [

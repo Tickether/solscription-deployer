@@ -1,21 +1,29 @@
 import './deploy.css';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import solscriptionDeployer from '../../solscriptionDeployer.json';
 import { usePrepareContractWrite, useContractWrite, useAccount, useNetwork, useWaitForTransaction } from 'wagmi';
+import useFetch from '../../hooks/useFetch';
 
 
 function Deploy() {
 
+  const { address, isConnected } = useAccount()
+  const { chain } = useNetwork()
+
+  const [contractAddress, setContractAddress] = useState('')
   const [ details, setDetails] = useState({
     name: 'Test',
     symbol: 'TT',
     feeDollar: '0',
     feeNative: '0',
     maxMonths: '12'
-});
+  });
 
-//console.log(Object.values(details))
+  const {data} = useFetch(`http://localhost:8000/api/owners/${address}`)
+
+  console.log(data)
+
 
   const handleChange = (e) => {
     setDetails((prev)=>({...prev, [e.target.id]:e.target.value}))
@@ -23,8 +31,18 @@ function Deploy() {
 
   let arg = Object.values(details)
 
+  
+  useEffect(()=> {
+    if (chain.network === 'sepolia') {
+      setContractAddress('0x611Ea02425A83Ab6018e7149166ECf2E48D8F0CA')
+    } else if (chain.network === 'goerli') {
+      setContractAddress('0xC5aB24Cb19D03A548058F934CA9fC165226C0b9d')
+    }      
+  }, [chain])
+  
+
   const { config, error } = usePrepareContractWrite({
-    address: '0xC5aB24Cb19D03A548058F934CA9fC165226C0b9d', 
+    address: contractAddress, 
     abi: solscriptionDeployer.output.abi,
     functionName: 'createSolscriptionContract',
     args: [ arg[0], arg[1], arg[2], arg[3], arg[4]]
@@ -36,28 +54,17 @@ function Deploy() {
     hash: contractWrite.data?.hash,
   })
   
-
-
-
-
-  const { address, isConnected } = useAccount()
-  const { chain } = useNetwork()
-  
   console.log(waitForTransaction.data?.logs[0].address)
   console.log(waitForTransaction.isSuccess)
 
-  
-  const handleCreate = async () => {
-    try {
-      await contractWrite.writeAsync?.()
-      
-      do {
-        console.log(waitForTransaction.data?.logs[0].address)
-        
+  useEffect(()=> {
+    if (waitForTransaction.isSuccess) {
+      if (data === null) {
         const owner = ({
-          walletAddress: address
+          walletAddress: address,
+          username: address
         });
-        const ownerRes = await axios.post('https://api.solscription.io/api/owner', owner);
+        const ownerRes = axios.post('http://localhost:8000/api/owners', owner);
         console.log(ownerRes)
 
         const contract = ({
@@ -67,13 +74,30 @@ function Deploy() {
           deployTxn: contractWrite.data?.hash,
           contractAddress: waitForTransaction.data?.logs[0].address,
         });
-        const contractRes = await axios.post('https://api.solscription.io/api/contract', contract);
-        console.log(contractRes)
-        
-        setInterval(() => {}, 10000);
+        const contractRes = axios.post(`http://localhost:8000/api/contracts/${address}`, contract);
+        console.log(contractRes)  
 
-      } while (!waitForTransaction.data?.logs[0].address);
-      
+      } else {
+        
+        const contract = ({
+          creator: address,
+          owner: address,
+          chain: chain.network,
+          deployTxn: contractWrite.data?.hash,
+          contractAddress: waitForTransaction.data?.logs[0].address,
+        });
+        const contractRes = axios.post(`http://localhost:8000/api/contracts/${address}`, contract);
+        console.log(contractRes)
+
+      }
+      console.log('yhhhh')
+    }
+
+  }, [waitForTransaction, address, data, chain, contractWrite])
+  
+  const handleCreate = async () => {
+    try {
+      await contractWrite.writeAsync?.()
     } catch (err) {
       console.log(err)
     }

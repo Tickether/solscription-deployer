@@ -8,7 +8,7 @@ import Navbar from '../../components/navbar/Navbar';
 function Collection() {
   const { address } = useAccount()
   
-  const {data, loading} = useFetch(`http://localhost:8000/api/owners/contracts/${address}`)
+  const {data, loading} = useFetch(`https://solscription-deployer-api.onrender.com/api/owners/contracts/${address}`)
 
   console.log(data)
 

@@ -5,7 +5,7 @@ import useFetch from "../../hooks/useFetch";
 
 function Profile() {
   
-  const {data, loading, reFetch} = useFetch(`https://api.tickether.io/api/ownners/`)
+  const {data, loading, reFetch} = useFetch(`https://solscription-deployer-api.onrender.com/api/ownners/`)
   
   return (
     <div className="profile">

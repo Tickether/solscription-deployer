@@ -21,7 +21,7 @@ function Deploy() {
     maxMonths: '12'
   });
 
-  const {data} = useFetch(`http://localhost:8000/api/owners/${address}`)
+  const {data} = useFetch(`https://solscription-deployer-api.onrender.com/api/owners/${address}`)
 
   console.log(data)
 
@@ -69,7 +69,7 @@ function Deploy() {
           walletAddress: address,
           username: address
         });
-        const ownerRes = axios.post('http://localhost:8000/api/owners', owner);
+        const ownerRes = axios.post('https://solscription-deployer-api.onrender.com/api/owners', owner);
         console.log(ownerRes)
 
         const contract = ({
@@ -80,7 +80,7 @@ function Deploy() {
           deployTxn: contractWrite.data?.hash,
           contractAddress: waitForTransaction.data?.logs[0].address,
         });
-        const contractRes = axios.post(`http://localhost:8000/api/contracts/${address}`, contract);
+        const contractRes = axios.post(`https://solscription-deployer-api.onrender.com/api/contracts/${address}`, contract);
         console.log(contractRes)  
 
       } else {
@@ -93,7 +93,7 @@ function Deploy() {
           deployTxn: contractWrite.data?.hash,
           contractAddress: waitForTransaction.data?.logs[0].address,
         });
-        const contractRes = axios.post(`http://localhost:8000/api/contracts/${address}`, contract);
+        const contractRes = axios.post(`https://solscription-deployer-api.onrender.com/api/contracts/${address}`, contract);
         console.log(contractRes)
 
       }

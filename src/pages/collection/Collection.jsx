@@ -7,7 +7,7 @@ import Contract from '../../components/contract/Contract';
 function Collection() {
   const { address } = useAccount()
   
-  const {data, loading} = useFetch(`https://localhost:8000/api/owners/contracts/${address}`)
+  const {data, loading} = useFetch(`http://localhost:8000/api/owners/contracts/${address}`)
 
   console.log(data)
 

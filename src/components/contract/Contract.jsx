@@ -11,12 +11,14 @@ function Contract({item}) {
         address: item.contractAddress,
         abi: solscription.output.abi,
         functionName: '_name',
+        chainId: item.chainID
     })
 
     const contractReadBaseUri = useContractRead({
         address: item.contractAddress,
         abi: solscription.output.abi,
         functionName: 'baseTokenURI',
+        chainId: item.chainID
     })
 
     return (

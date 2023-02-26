@@ -71,6 +71,7 @@ function Deploy() {
           creator: address,
           owner: address,
           chain: chain.network,
+          chainID: chain.id,
           deployTxn: contractWrite.data?.hash,
           contractAddress: waitForTransaction.data?.logs[0].address,
         });
@@ -83,6 +84,7 @@ function Deploy() {
           creator: address,
           owner: address,
           chain: chain.network,
+          chainID: chain.id,
           deployTxn: contractWrite.data?.hash,
           contractAddress: waitForTransaction.data?.logs[0].address,
         });
@@ -138,7 +140,7 @@ function Deploy() {
             onChange={handleChange} 
             required
         />
-        <label>Number of Moths</label>
+        <label>Number of Months</label>
         <input 
             type="number" 
             placeholder= {arg[4]} 

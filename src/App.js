@@ -41,7 +41,7 @@ function App() {
           <Routes>
             <Route path='/collection' element= {<Collection />} />
             <Route path='/profile' element= {<Profile />} />
-            <Route path='/contract' element= {<Contract />} />
+            <Route path='/contract/:contractaddress' element= {<Contract />} />
             <Route path='/' element= {<Deploy />} />
           </Routes>
         </Router>

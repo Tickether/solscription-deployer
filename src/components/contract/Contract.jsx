@@ -13,27 +13,38 @@ function Contract({item}) {
         functionName: '_name',
         chainId: item.chainID
     })
+    const contractReadSymbol = useContractRead({
+        address: item.contractAddress,
+        abi: solscription.output.abi,
+        functionName: '_symbol',
+        chainId: item.chainID
+    })
 
+    /*
     const contractReadBaseUri = useContractRead({
         address: item.contractAddress,
         abi: solscription.output.abi,
         functionName: 'baseTokenURI',
         chainId: item.chainID
     })
+    */
 
     return (
         <div className="contract">
-            <Link to={`/collections/${item.contractAddress}`}>
+            <Link to={`/contract/${item.contractAddress}`}>
                 <img 
                     src={item.image} 
                     alt="" 
                     className="contractImg" 
                 />
                 <div className="contractDesc">
+                    
                     <h1 className="siTitle">{item.contractAddress}</h1>
-                    <span className="siGenre">{item.contractAddress}</span>
-                    <span className="siRegion">{item.contractAddress}</span>
-                    <span className="siLabel">{item.contractAddress}</span>
+                    <span className="siGenre">{contractReadName.data}</span>
+                    <span className="siGenre">{contractReadSymbol.data}</span>
+                    <span className="siGenre">{item.deployTxn}</span>
+                    <span className="siGenre">{item.chain}</span>
+                    
                 </div>
             </Link>
         </div>

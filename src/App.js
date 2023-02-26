@@ -41,7 +41,6 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path='/deploy' element= {<Deploy />} />
             <Route path='/collection' element= {<Collection />} />
             <Route path='/profile' element= {<Profile />} />
             <Route path='/contract' element= {<Contract />} />

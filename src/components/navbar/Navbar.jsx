@@ -9,7 +9,7 @@ function Navbar() {
   
     return (
         <div className="navbar">
-            <Link to='/deploy'>
+            <Link to='/'>
                 <span className="">Deploy</span>
             </Link>
             <Link to='/collection'>

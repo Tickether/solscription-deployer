@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import solscriptionDeployer from '../../solscriptionDeployer.json';
 import { usePrepareContractWrite, useContractWrite, useAccount, useNetwork, useWaitForTransaction } from 'wagmi';
 import useFetch from '../../hooks/useFetch';
+import Navbar from '../../components/navbar/Navbar';
 
 
 function Deploy() {
@@ -107,6 +108,7 @@ function Deploy() {
 
   return (
     <div className="deploy">
+      <Navbar />
       <div>
         <label>Name</label>
         <input 

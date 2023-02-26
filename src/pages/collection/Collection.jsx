@@ -2,6 +2,7 @@ import './collection.css';
 import useFetch from "../../hooks/useFetch";
 import { useAccount } from 'wagmi';
 import Contract from '../../components/contract/Contract';
+import Navbar from '../../components/navbar/Navbar';
 
 
 function Collection() {
@@ -13,6 +14,7 @@ function Collection() {
 
   return (
     <div className="collection">
+      <Navbar />
       <div>
       {loading ? (
         "loading"

@@ -32,15 +32,18 @@ function Deploy() {
 
   let arg = Object.values(details)
 
-  /*
+  
   useEffect(()=> {
-    if (chain.network === 'sepolia') {
-      setContractAddress('0x611Ea02425A83Ab6018e7149166ECf2E48D8F0CA')
-    } else if (chain.network === 'goerli') {
-      setContractAddress('0xC5aB24Cb19D03A548058F934CA9fC165226C0b9d')
-    }      
-  }, [chain])
-  */
+    if(isConnected){
+      if (chain.network === 'sepolia') {
+        setContractAddress('0x611Ea02425A83Ab6018e7149166ECf2E48D8F0CA')
+      } else if (chain.network === 'goerli') {
+        setContractAddress('0xC5aB24Cb19D03A548058F934CA9fC165226C0b9d')
+      }      
+    }
+    
+  }, [chain, isConnected])
+  
   
 
   const { config, error } = usePrepareContractWrite({

@@ -113,57 +113,58 @@ function Deploy() {
   return (
     <div className="deploy">
       <Navbar />
-      <div>
-        <label>Name</label>
-        <input 
-            type="text" 
-            placeholder= {arg[0]} 
-            id='name' 
-            onChange={handleChange} 
-            required
-        />
-        <label>Symbol</label>
-        <input 
-            type="text" 
-            placeholder= {arg[1]}  
-            id='symbol' 
-            onChange={handleChange} 
-            required
-        />
-        <label>Fee in Dollars</label>
-        <input 
-            type="number" 
-            placeholder= {arg[2]}  
-            id='feeDollar' 
-            onChange={handleChange} 
-            required
-        />
-        <label>Fee in Crypto</label>
-        <input 
-            type="number" 
-            placeholder= {arg[3]} 
-            id='feeNative' 
-            onChange={handleChange} 
-            required
-        />
-        <label>Number of Months</label>
-        <input 
-            type="number" 
-            placeholder= {arg[4]} 
-            id='maxMonths' 
-            onChange={handleChange} 
-            required
-        />
+      <div className='deployContainer'>
+        <div className='deployForm'>
+          <label>Name</label>
+          <input 
+              type="text" 
+              placeholder= {arg[0]} 
+              id='name' 
+              onChange={handleChange} 
+              required
+          />
+          <label>Symbol</label>
+          <input 
+              type="text" 
+              placeholder= {arg[1]}  
+              id='symbol' 
+              onChange={handleChange} 
+              required
+          />
+          <label>Fee in Dollars</label>
+          <input 
+              type="number" 
+              placeholder= {arg[2]}  
+              id='feeDollar' 
+              onChange={handleChange} 
+              required
+          />
+          <label>Fee in Crypto</label>
+          <input 
+              type="number" 
+              placeholder= {arg[3]} 
+              id='feeNative' 
+              onChange={handleChange} 
+              required
+          />
+          <label>Number of Months</label>
+          <input 
+              type="number" 
+              placeholder= {arg[4]} 
+              id='maxMonths' 
+              onChange={handleChange} 
+              required
+          />
+        </div>
+        <div>
+          <button disabled={ !isConnected || contractWrite.isLoading || waitForTransaction.isLoading } onClick={handleCreate}>
+            Create
+          </button>
+          {error && (
+            <div>An error occurred preparing the transaction: {error.message}</div>
+          )}
+        </div>
       </div>
-      <div>
-        <button disabled={ !isConnected || contractWrite.isLoading || waitForTransaction.isLoading } onClick={handleCreate}>
-          Create
-        </button>
-        {error && (
-          <div>An error occurred preparing the transaction: {error.message}</div>
-        )}
-      </div>
-
     </div>
   );
 }

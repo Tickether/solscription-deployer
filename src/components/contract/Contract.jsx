@@ -37,9 +37,9 @@ function Contract({item}) {
                     alt="" 
                     className="contractImg" 
                 />
-                <div className="contractDesc">
+                <div className="contractDetails">
                     
-                    <h1 className="siTitle">{item.contractAddress}</h1>
+                    <h2 className="siTitle">{item.contractAddress}</h2>
                     <span className="siGenre">{contractReadName.data}</span>
                     <span className="siGenre">{contractReadSymbol.data}</span>
                     <span className="siGenre">{item.deployTxn}</span>

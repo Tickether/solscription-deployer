@@ -15,16 +15,18 @@ function Collection() {
   return (
     <div className="collection">
       <Navbar />
-      <div>
-      {loading ? (
-        "loading"
-      ) : (
-        <>
-          {data.map(item=>(
-              <Contract item={item} key={item.contractAddress}/>
-          ))}
-        </>
-      )}
+      <div className="collectionContainer">
+        <div className="collectionWrapper">
+          {loading ? (
+            "loading"
+          ) : (
+            <>
+              {data.map(item=>(
+                  <Contract item={item} key={item.contractAddress}/>
+              ))}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -36,15 +36,15 @@ function Contract() {
   return (
     <div className="contract">
       <Navbar />
-      <div>
-      {loading ? (
-        "loading"
-      ) : (
-        <div>
-          <p>{contractReadName.data}</p>
-          <p>{contractReadSymbol.data}</p>
-        </div>
-      )}
+      <div className="contractContainer">
+        {loading ? (
+          "loading"
+        ) : (
+          <div>
+            <p>{contractReadName.data}</p>
+            <p>{contractReadSymbol.data}</p>
+          </div>
+        )}
       </div>
       
     </div>

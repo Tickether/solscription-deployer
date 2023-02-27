@@ -1,0 +1,13 @@
+.collectionContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.collectionWrapper{
+    
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+}

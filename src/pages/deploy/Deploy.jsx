@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import solscriptionDeployer from '../../solscriptionDeployer.json';
 import { usePrepareContractWrite, useContractWrite, useAccount, useNetwork, useWaitForTransaction } from 'wagmi';
 import useFetch from '../../hooks/useFetch';
-import Navbar from '../../components/navbar/Navbar';
 
 
 function Deploy() {
@@ -112,58 +111,70 @@ function Deploy() {
 
   return (
     <div className="deploy">
-      <Navbar />
       <div className='deployContainer'>
-        <div className='deployForm'>
-          <label>Name</label>
-          <input 
-              type="text" 
-              placeholder= {arg[0]} 
-              id='name' 
-              onChange={handleChange} 
-              required
-          />
-          <label>Symbol</label>
-          <input 
-              type="text" 
-              placeholder= {arg[1]}  
-              id='symbol' 
-              onChange={handleChange} 
-              required
-          />
-          <label>Fee in Dollars</label>
-          <input 
-              type="number" 
-              placeholder= {arg[2]}  
-              id='feeDollar' 
-              onChange={handleChange} 
-              required
-          />
-          <label>Fee in Crypto</label>
-          <input 
-              type="number" 
-              placeholder= {arg[3]} 
-              id='feeNative' 
-              onChange={handleChange} 
-              required
-          />
-          <label>Number of Months</label>
-          <input 
-              type="number" 
-              placeholder= {arg[4]} 
-              id='maxMonths' 
-              onChange={handleChange} 
-              required
-          />
+        <div className='deployFormWrapper'>
+          <div className='deployForm'>
+            <div className='deployInputWrapper'>
+              <label>Name</label>
+              <input 
+                  type="text" 
+                  placeholder= {arg[0]} 
+                  id='name' 
+                  onChange={handleChange} 
+                  required
+              />
+            </div>
+            <div className='deployInputWrapper'>
+              <label>Symbol</label>
+              <input 
+                  type="text" 
+                  placeholder= {arg[1]}  
+                  id='symbol' 
+                  onChange={handleChange} 
+                  required
+              />
+            </div>
+            <div className='deployInputWrapper'>
+              <label>Fee in Dollars</label>
+              <input 
+                  type="number" 
+                  placeholder= {arg[2]}  
+                  id='feeDollar' 
+                  onChange={handleChange} 
+                  required
+              />
+            </div>
+            <div className='deployInputWrapper'>
+              <label>Fee in Crypto</label>
+              <input 
+                  type="number" 
+                  placeholder= {arg[3]} 
+                  id='feeNative' 
+                  onChange={handleChange} 
+                  required
+              />
+            </div>
+            <div className='deployInputWrapper'>
+              <label>Number of Months</label>
+              <input 
+                  type="number" 
+                  placeholder= {arg[4]} 
+                  id='maxMonths' 
+                  onChange={handleChange} 
+                  required
+              />
+            </div>
+          </div>
+          <div className='deployButtonWrapper'>
+            <button className='deployButton' disabled={ !isConnected || contractWrite.isLoading || waitForTransaction.isLoading } onClick={handleCreate}>
+              Create
+            </button>
+            {error && (
+              <div>An error occurred preparing the transaction: {error.message}</div>
+            )}
         </div>
-        <div>
-          <button disabled={ !isConnected || contractWrite.isLoading || waitForTransaction.isLoading } onClick={handleCreate}>
-            Create
-          </button>
-          {error && (
-            <div>An error occurred preparing the transaction: {error.message}</div>
-          )}
         </div>
+        
       </div>
     </div>
   );

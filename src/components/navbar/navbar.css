@@ -1,18 +1,27 @@
 .navbar{
-    
-    height: 60px;
+    width: 100%;
+    height: 100px;
+    background-color: #212427;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
 }
+
 .navbarContainer{
-    align-self: center;
-    width: 100%;
-    max-width: 1024px;
-    display: flex;
+    width: 80%;
+    display: flex;   
     align-items: center;
     justify-content: space-between;
 }
-.logo{
-    width: 66px;
+
+.navbarMenu{
+    display: flex;
+    gap: 20px;
+}
+
+.navbarSpan{
+    color: aliceblue;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
 }

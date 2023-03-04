@@ -8,6 +8,7 @@ import Deploy from './pages/deploy/Deploy';
 import Contract from './pages/contract/Contract';
 import Profile from './pages/profile/Profile';
 import Collection from './pages/collection/Collection';
+import Navbar from './components/navbar/Navbar';
 
 
 
@@ -38,6 +39,7 @@ function App() {
     <div className="App">
       <WagmiConfig client={wagmiClient}>
         <Router>
+          <Navbar />
           <Routes>
             <Route path='/collection' element= {<Collection />} />
             <Route path='/profile' element= {<Profile />} />

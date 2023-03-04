@@ -1,7 +1,7 @@
 import './navbar.css';
 import { Web3Button } from "@web3modal/react";
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logos/solscription_logo_white_text.svg';
 
 
 function Navbar() {
@@ -14,13 +14,15 @@ function Navbar() {
                 <div>
                     <img src={Logo} className="logo" />
                 </div>
+                <div className="navbarMenu">
                 <Link to='/'>
-                    <span className="">Deploy</span>
+                    <span className="navbarSpan">Deploy</span>
                 </Link>
                 <Link to='/collection'>
-                    <span className="">Collection</span>
+                    <span className="navbarSpan">Collection</span>
                 </Link>
-                <Web3Button />
+                </div>
+                <div><Web3Button /></div>
             </div>
         </div>
   );

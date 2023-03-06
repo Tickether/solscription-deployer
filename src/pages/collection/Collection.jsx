@@ -9,6 +9,8 @@ import Deploy from '../../components/deploy/Deploy';
 function Collection() {
   const { address } = useAccount()
 
+  console.log(address)
+
   const[openModal, setOpenModal] = useState(false)
   
   const {data} = useFetch(`https://solscription-deployer-api.onrender.com/api/owners/contracts/${address}`)
@@ -49,9 +51,30 @@ function Collection() {
             </>
           ) : (
             <>
-              {data.map(item=>(
-                  <Contract item={item} key={item.contractAddress}/>
-              ))}
+              <div className="collectionWrapper">
+                <div className="collectionWelcomeWrapper">
+                  <span>New here? Check out thegetting started guide ↗</span>
+                </div>
+                <div className="collectionLowerWrapper">
+                  <div className="collectionOpionsWrapper">
+                    <span>Sols</span>
+                    <span>Transactions</span>
+                  </div>
+                  <div className="collectionButtonWrapper">
+                    <button 
+                    className="collectionButton"
+                    onClick={() => setOpenModal(true)}
+                    >
+                      Create
+                    </button>
+                  </div>
+                  <div className="collectionListWrapper">
+                    {data.map(item=>(
+                      <Contract item={item} key={item.contractAddress}/>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </>
           )}
         </div>

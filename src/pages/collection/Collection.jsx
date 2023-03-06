@@ -4,6 +4,7 @@ import { useAccount } from 'wagmi';
 import Contract from '../../components/contract/Contract';
 import { useState } from 'react';
 import Deploy from '../../components/deploy/Deploy';
+import Create from '../../assets/deploy/vector.svg';
 
 
 function Collection() {
@@ -41,7 +42,7 @@ function Collection() {
                 </div>
                 <div className="collectionEmptyWrapper">
                   <div>
-                    <img src="" alt="" />
+                    <img className="collectionEmptyImage" src={Create} alt="" />
                   </div>
                   <div>
                     <span>Create a new Solscription</span>

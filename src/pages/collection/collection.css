@@ -68,5 +68,10 @@
     border: 2.5px dashed lightgray;
     border-radius: 5px;
     font-family: 'Space Grotesk', sans-serif;
+    gap: 2vh;
     
+}
+
+.collectionEmptyImage{
+    outline: aliceblue;
 }

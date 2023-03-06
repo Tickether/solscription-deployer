@@ -1,0 +1,73 @@
+.deploy{
+    background-color: rgba(0, 0, 0, 0.356);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.deployContainer{
+    display: flex;
+    width: 80%;
+    max-width: 80vw;
+    align-items: center;
+    justify-content: center;
+    
+}
+.deployFormWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vh;
+    border: 2.5px dashed lightgray;
+    background: #212427;
+}
+
+.deployForm{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+    gap: 2.5vh;
+}
+
+.deployInputWrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-weight: 500;
+}
+input{
+    height: 30px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.deployButton{
+    border: none;
+    width: 10rem;
+    height: 3rem;
+    background-color: #92278F;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: .8rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.deployCancelButton{
+    border: none;
+    width: 10rem;
+    height: 3rem;
+    background-color: transparent;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: .8rem;
+    font-family: 'Poppins', sans-serif;
+}
+

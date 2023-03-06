@@ -4,7 +4,6 @@ import { Web3Modal } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { sepolia, goerli, arbitrum, mainnet, polygon } from "wagmi/chains";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Deploy from './pages/deploy/Deploy';
 import Contract from './pages/contract/Contract';
 import Profile from './pages/profile/Profile';
 import Collection from './pages/collection/Collection';
@@ -41,10 +40,9 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path='/collection' element= {<Collection />} />
+            <Route path='/' element= {<Collection />} />
             <Route path='/profile' element= {<Profile />} />
             <Route path='/contract/:contractaddress' element= {<Contract />} />
-            <Route path='/' element= {<Deploy />} />
           </Routes>
         </Router>
       </WagmiConfig>

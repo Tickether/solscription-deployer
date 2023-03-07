@@ -54,7 +54,7 @@ function Collection() {
             <>
               <div className="collectionWrapper">
                 <div className="collectionWelcomeWrapper">
-                  <span>New here? Check out thegetting started guide ↗</span>
+                  <span>New here? Check out the getting started guide ↗</span>
                 </div>
                 <div className="collectionLowerWrapper">
                   <div className="collectionOpionsWrapper">

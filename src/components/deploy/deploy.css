@@ -6,7 +6,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 .deployContainer{
     display: flex;
@@ -14,7 +13,6 @@
     max-width: 80vw;
     align-items: center;
     justify-content: center;
-    
 }
 .deployFormWrapper{
     display: flex;
@@ -23,6 +21,7 @@
     gap: 1.5vh;
     border: 2.5px dashed lightgray;
     background: #212427;
+    padding: 66px;
 }
 
 .deployForm{
